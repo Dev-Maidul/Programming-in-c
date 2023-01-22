@@ -1,0 +1,156 @@
+// Problem number 1
+#include<stdio.h>
+int main(void)
+{
+    FILE *input;
+    input= fopen("input.txt", "r");
+    if(input==NULL)
+    {
+        printf("File not found\n");
+        return 0;
+    }
+    FILE *output;
+    output= fopen("output.txt", "w");
+     int n;
+    fscanf(input,"%d",&n);
+    for(int i=0; i<n; i++)
+    {
+        int a;
+        fscanf(input,"%d",&a);
+        fprintf(output,"%d ",a);
+    }
+    fclose(input);
+    fclose(output);
+    return 0;
+}
+// Problem number 2===============================================================================
+#include<stdio.h>
+
+void display (int i, int n)
+{
+    
+    FILE *output_file;
+    output_file= fopen("output.txt", "w");
+    if(i>n) return;
+    fprintf(output_file,"%d ",i);
+    display(i+1, n);
+}
+
+int main(void)
+{
+    FILE *input_file;
+    input_file= fopen("input.txt", "r");
+    if(input_file==NULL)
+    {
+        printf("File not found");
+    }
+    FILE *output_file;
+    output_file= fopen("output.txt", "w");
+    int n;
+    fscanf(input_file,"%d",&n);
+    display(1,n);
+
+    return 0;
+}
+// Problem number 3===============================================================================
+#include <stdio.h>
+int main(void)
+{
+  FILE *input_file;
+  input_file = fopen("input.txt", "r");
+  if (input_file == NULL)
+  {
+    printf("File not found");
+    return 0;
+  }
+  FILE *output_file;
+  output_file = fopen("output.txt", "w");
+  int t;
+  fscanf(input_file, "%d", &t);
+  while (t--)
+  {
+    int n, i;
+    fscanf(input_file, "%d", &n);
+    if (n > 0)
+    {
+      for (i = n; i >= -n; i--)
+      {
+        fprintf(output_file, "%d ", i);
+        fprintf(output_file, "\n");
+        
+      }
+    }
+   
+    else
+    {
+      for (i = n; i <= (-n); i++)
+      {
+        // print i
+        fprintf(output_file,"%d ",i);
+      }
+    }
+  }
+
+  return 0;
+}
+// Problem number 4===============================================================================
+#include<stdio.h>
+int main(void)
+{
+   FILE *input_file;
+   input_file= fopen("input.txt", "r");
+   if(input_file==NULL)
+   {
+    printf("File not found");
+    return 0;
+   }
+   FILE *output_file;
+   output_file= fopen("output.txt", "w");
+    int n;
+    fscanf(input_file,"%d",&n);
+    int ara[n];
+    int sum=0;
+    for(int i=0; i<n; i++)
+    {
+        fscanf(input_file,"%d",&ara[i]);
+        ara[i]= ara[i]%10;
+    }
+    for(int i=0; i<n; i++)
+    {
+        sum+= ara[i];
+       
+    }
+    fprintf(output_file,"Sum= %d",sum);
+    fclose(input_file);
+    fclose(output_file);
+
+    return 0;
+}
+// Problem number 6===============================================================================
+#include<stdio.h>
+
+int main(void)
+{
+    FILE *input_file;
+    input_file= fopen("input.txt", "r");
+    if(input_file==NULL)
+    {
+        printf("File not found");
+        return 0;
+    }
+    FILE *output_file;
+    output_file= fopen("output.txt", "a");
+    int n;
+    fscanf(input_file,"%d",&n);
+    if(n%4==0 && n%100!=0 || n%400==0)
+    {
+        fprintf(output_file,"%d-->YES\n",n);
+    }
+    else
+    {
+        fprintf(output_file,"%d-->NO\n",n);
+    }
+    fclose(input_file);
+    fclose(output_file);
+    return 0;
+}
